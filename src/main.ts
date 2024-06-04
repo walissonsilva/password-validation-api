@@ -1,7 +1,9 @@
+import "dotenv/config";
 import express from "express";
+import { env } from "./env";
 
 const app = express();
 
-app.listen(5000, () => {
-  console.log(`Server started on port 5000`);
+app.listen(env.Port, () => {
+  console.log(`Server is running on port ${env.Port}`);
 });
