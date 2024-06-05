@@ -1,10 +1,14 @@
-import { Lifecycle, autoInjectable, injectable, scoped } from "tsyringe";
+import { IPasswordValidatorService } from "src/services/PasswordValidatorService";
+import { Lifecycle, inject, scoped } from "tsyringe";
 
 @scoped(Lifecycle.ContainerScoped)
 export class ValidatePassword {
-  constructor() {}
+  constructor(
+    @inject("PasswordValidatorService")
+    private readonly passwordValidatorService: IPasswordValidatorService
+  ) {}
 
   handle(password: string): boolean {
-    return password.length >= 9;
+    return this.passwordValidatorService.isValid(password);
   }
 }
