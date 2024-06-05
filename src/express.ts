@@ -3,11 +3,12 @@ import cors from "cors";
 import helmet from "helmet";
 import { registerDependencies } from "./dependency-injection";
 import { configureRoutes } from "./routes";
+import { errorHandler } from "./middlewares/errors-handler";
 
 export const app = express();
 
+// Middlewares
 app.use(helmet());
-
 app.use(
   cors({
     origin: true,
@@ -28,3 +29,6 @@ app.get("/", (_, res) =>
     health: "ok",
   })
 );
+
+// Error Handler Middleware
+app.use(errorHandler);
