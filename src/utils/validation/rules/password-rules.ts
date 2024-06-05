@@ -38,3 +38,10 @@ export class NoRepeatedCharactersRule implements ValidationRule {
     return true;
   }
 }
+
+export class NoSpaceRule implements ValidationRule {
+  validate(password: string): boolean {
+    const hasSpace = /\s/.test(password);
+    return !hasSpace;
+  }
+}
