@@ -1,9 +1,9 @@
 import { Router, Request, Response } from "express";
-import { validateInput } from "src/middlewares/validate-input";
+import { validateInput } from "../middlewares/validate-input";
 import {
   ValidatePassword,
   ValidatePasswordInputSchema,
-} from "src/usecases/Validation/ValidatePassword";
+} from "../usecases/Validation/ValidatePassword";
 import { Lifecycle, inject, scoped } from "tsyringe";
 
 @scoped(Lifecycle.ContainerScoped)

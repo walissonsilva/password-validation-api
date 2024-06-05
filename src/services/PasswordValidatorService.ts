@@ -1,14 +1,5 @@
-import { injectable } from "tsyringe";
-import {
-  DigitRule,
-  LowerCaseRule,
-  MinLengthRule,
-  NoRepeatedCharactersRule,
-  NoSpaceRule,
-  SpecialCharacterRule,
-  UpperCaseRule,
-} from "src/utils/validation/rules/password-rules";
-import { Validator } from "src/utils/validation/validator";
+import { IPasswordValidator } from "src/validators/PasswordValidator/PasswordValidator";
+import { inject, injectable } from "tsyringe";
 
 export type IPasswordValidatorService = {
   isValid(password: string): boolean;
@@ -16,19 +7,10 @@ export type IPasswordValidatorService = {
 
 @injectable()
 export class PasswordValidatorService implements IPasswordValidatorService {
-  private passwordValidator: Validator;
-
-  constructor() {
-    this.passwordValidator = new Validator();
-
-    this.passwordValidator.addRule(new MinLengthRule(9));
-    this.passwordValidator.addRule(new DigitRule());
-    this.passwordValidator.addRule(new LowerCaseRule());
-    this.passwordValidator.addRule(new UpperCaseRule());
-    this.passwordValidator.addRule(new SpecialCharacterRule());
-    this.passwordValidator.addRule(new NoRepeatedCharactersRule());
-    this.passwordValidator.addRule(new NoSpaceRule());
-  }
+  constructor(
+    @inject("PasswordValidator")
+    private readonly passwordValidator: IPasswordValidator
+  ) {}
 
   isValid(password: string): boolean {
     return this.passwordValidator.validate(password);
