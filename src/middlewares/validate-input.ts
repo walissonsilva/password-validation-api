@@ -11,11 +11,12 @@ export const validateInput =
     } catch (error) {
       if (error instanceof ZodError) {
         const errorMessages = error.errors.map((issue: any) => ({
-          message: `${issue.path.join(".")} is ${issue.message}`,
+          message: `'${issue.path.join(".")}' is ${issue.message}`,
         }));
-        res
-          .status(StatusCodes.BAD_REQUEST)
-          .json({ error: "Invalid data", details: errorMessages });
+        res.status(StatusCodes.BAD_REQUEST).json({
+          error: "Input data provided is invalid",
+          details: errorMessages,
+        });
       } else {
         res
           .status(StatusCodes.INTERNAL_SERVER_ERROR)
