@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
-import { ValidationController } from "./controllers/ValitionController";
-import { ValidatePassword } from "./usecases/Validation/ValidatePassword";
+import { registerDependencies } from "./dependency-injection";
+import { configureRoutes } from "./routes";
 
 export const app = express();
 
@@ -20,11 +20,8 @@ app.use(
   })
 );
 
-const validatePassword = new ValidatePassword();
-
-const validationController = new ValidationController(validatePassword);
-
-app.use("/validate/", validationController.routes);
+registerDependencies();
+configureRoutes();
 
 app.get("/", (_, res) =>
   res.status(200).json({

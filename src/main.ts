@@ -1,4 +1,5 @@
 import "dotenv/config";
+import "reflect-metadata";
 import { env } from "./env";
 import { app } from "./express";
 

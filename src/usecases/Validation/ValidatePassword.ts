@@ -1,3 +1,6 @@
+import { Lifecycle, autoInjectable, injectable, scoped } from "tsyringe";
+
+@scoped(Lifecycle.ContainerScoped)
 export class ValidatePassword {
   constructor() {}
 

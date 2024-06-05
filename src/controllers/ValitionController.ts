@@ -1,10 +1,15 @@
 import { Router, Request, Response } from "express";
 import { ValidatePassword } from "src/usecases/Validation/ValidatePassword";
+import { Lifecycle, inject, scoped } from "tsyringe";
 
+@scoped(Lifecycle.ContainerScoped)
 export class ValidationController {
   private router: Router;
 
-  constructor(private readonly validatePassword: ValidatePassword) {
+  constructor(
+    @inject("ValidatePassword")
+    private readonly validatePassword: ValidatePassword
+  ) {
     this.router = Router();
   }
 
