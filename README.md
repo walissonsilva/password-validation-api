@@ -93,6 +93,8 @@ Dessa forma, você deve criar um arquivo `.env` na raiz do repositório que siga
 PORT=5000
 ```
 
+> 💡 Embora fosse possível definir um valor padrão para a variável `PORT`, eu optei por deixar essa definição manual por meio do arquivo `.env` para reforçar a importância da validação das variáveis de ambiente (considerando que essa é a única variável de ambiente do projeto).
+
 ### Passos para Execução do Projeto
 
 1. Clone o repositório e acesse a pasta do projeto:
@@ -128,7 +130,7 @@ Para rodar todos os testes da aplicação, utilize o comando:
 yarn test
 ```
 
-## Decisões do Projeto
+## Decisões Técnicas do Projeto
 
 ### 1. Variáveis de Ambiente
 
@@ -139,6 +141,12 @@ Para validar as variáveis de ambiente foi utilizada a biblioteca [Zod](https://
 ### 2. Setup de Testes
 
 Foi utilizado o Vitest para realizar os testes da aplicação. O motivo desta escolha está relacionado à simplicidade de se realizar o setup para execução dos testes em aplicações Node.js com TypeScript, além da velocidade na execução dos testes e a compatibilidade que esta ferramenta possui com o Jest API e todo o ecossistema de bibliotecas deste outro _test runner_. Para mais detalhes sobre a compatibilidade entre esses test runners, [clique aqui](https://vitest.dev/guide/comparisons#jest:~:text=Vitest%20offers%20compatibility%20with%20most%20of%20the%20Jest%20API%20and%20ecosystem%20libraries%2C%20so%20in%20most%20projects%2C%20it%20should%20be%20a%20drop%2Din%20replacement%20for%20Jest.).
+
+Em termos de arquitetura de pastas, foi escolhida uma abordagem de criação de testes no mesmo diretório do arquivo que será testado. Essa decisão foi tomada pelos seguintes motivos:
+
+1. É mais fácil encontrar os arquivos de testes, o que facilita a manutenção.
+2. Fosse mais fácil identificar os arquivos do projeto que não possuem testes.
+3. Criar uma pasta separada para os testes da aplicação, que tivesse a mesma hierarquia dos arquivos a serem testados, poderia dificultar a manutenção, principalmente no caso dos arquivos precisarem ser movidos para outras pastas.
 
 ### 3. Implementação do Validador
 
@@ -165,6 +173,8 @@ Nesse caso, como não existe nenhuma regra definida, o validador retornará semp
 > 🧪 Observe os testes que foram desenvolvidos no arquivo `BaseValidator.test.ts`.
 
 ### 4. Injeção de Dependência
+
+Foi utilizado a padrão de injeção de dependências por meio da biblioteca do [`tsyringe`](https://github.com/microsoft/tsyringe). Por meio dela é possível registrar as dependências da aplicação em um container, simplificando a utilização e o gerenciamento das dependências da aplicação, principalmente à medida que o projeto escala.
 
 # Contato
 
