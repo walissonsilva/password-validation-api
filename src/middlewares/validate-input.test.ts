@@ -1,15 +1,11 @@
 // validateInput.test.ts
 import { describe, it, expect, vi } from "vitest";
-import { Request, Response, NextFunction } from "express";
+import { Request, Response } from "express";
 import { z, AnyZodObject } from "zod";
 import { validateInput } from "./validate-input";
 import { StatusCodes } from "http-status-codes";
 
-const mockRequest = (
-  body: any = {},
-  query: any = {},
-  params: any = {}
-): Request =>
+const mockRequest = (body: any = {}, query: any = {}, params: any = {}): Request =>
   ({
     body,
     query,
@@ -55,9 +51,7 @@ describe("validateInput Middleware", () => {
     expect(res.status).toHaveBeenCalledWith(StatusCodes.BAD_REQUEST);
     expect(res.json).toHaveBeenCalledWith({
       error: "Input data provided is invalid",
-      details: expect.arrayContaining([
-        { message: "'age' is Number must be greater than or equal to 18" },
-      ]),
+      details: expect.arrayContaining([{ message: "'age' is Number must be greater than or equal to 18" }]),
     });
     expect(next).not.toHaveBeenCalled();
   });

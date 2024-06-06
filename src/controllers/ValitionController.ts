@@ -1,9 +1,6 @@
 import { Router, Request, Response } from "express";
 import { validateInput } from "../middlewares/validate-input";
-import {
-  ValidatePassword,
-  ValidatePasswordInputSchema,
-} from "../usecases/validation/ValidatePassword";
+import { ValidatePassword, ValidatePasswordInputSchema } from "../usecases/Validation/ValidatePassword";
 import { Lifecycle, inject, scoped } from "tsyringe";
 
 @scoped(Lifecycle.ContainerScoped)
@@ -12,17 +9,13 @@ export class ValidationController {
 
   constructor(
     @inject("ValidatePassword")
-    private readonly validatePassword: ValidatePassword
+    private readonly validatePassword: ValidatePassword,
   ) {
     this.router = Router();
   }
 
   get routes() {
-    this.router.post(
-      "/password",
-      validateInput(ValidatePasswordInputSchema),
-      this.password.bind(this)
-    );
+    this.router.post("/password", validateInput(ValidatePasswordInputSchema), this.password.bind(this));
 
     return this.router;
   }
