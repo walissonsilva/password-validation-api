@@ -1,8 +1,8 @@
 import "reflect-metadata";
 import { beforeAll, describe, expect, it } from "vitest";
-import { ValidatePassword } from "./ValidatePassword";
 import { container } from "tsyringe";
 import { registerDependencies } from "src/dependency-injection";
+import { ValidatePassword } from "./ValidatePassword";
 
 describe("ValidatePassword", () => {
   beforeAll(() => {

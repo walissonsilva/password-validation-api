@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { BaseValidator } from "./BaseValidator";
-import { FakeValidationRule } from "src/tests/fakes/models/FakeValidatorRule";
+import { FakeValidationRule } from "src/tests/fakes";
 
 describe("BaseValidator", () => {
   it("should return true if any rule is provided", () => {

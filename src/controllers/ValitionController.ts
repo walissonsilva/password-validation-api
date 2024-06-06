@@ -3,7 +3,7 @@ import { validateInput } from "../middlewares/validate-input";
 import {
   ValidatePassword,
   ValidatePasswordInputSchema,
-} from "../usecases/Validation/ValidatePassword";
+} from "../usecases/validation/ValidatePassword";
 import { Lifecycle, inject, scoped } from "tsyringe";
 
 @scoped(Lifecycle.ContainerScoped)

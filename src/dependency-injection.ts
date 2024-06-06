@@ -1,5 +1,5 @@
 import { container } from "tsyringe";
-import { ValidatePassword } from "./usecases/Validation/ValidatePassword";
+import { ValidatePassword } from "./usecases/validation/ValidatePassword";
 import { PasswordValidatorService } from "./services/PasswordValidatorService";
 import { PasswordValidator } from "./validators/PasswordValidator/PasswordValidator";
 
