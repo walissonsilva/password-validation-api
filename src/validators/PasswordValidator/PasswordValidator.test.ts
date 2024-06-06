@@ -2,12 +2,12 @@ import { describe, expect, it } from "vitest";
 import { PasswordValidator } from "./PasswordValidator";
 
 describe("PasswordValidator", () => {
-  describe("PasswordValidator", () => {
-    it("should return true if password is valid", () => {
+  describe("Invalid Passwords", () => {
+    it("should return false if password is empty", () => {
       const passwordValidator = new PasswordValidator();
 
-      const result = passwordValidator.validate("AbTp9!fok");
-      expect(result).toBe(true);
+      const result = passwordValidator.validate("");
+      expect(result).toBe(false);
     });
 
     it("should return false if password is invalid", () => {
@@ -15,6 +15,15 @@ describe("PasswordValidator", () => {
 
       const result = passwordValidator.validate("AbTp9 fok");
       expect(result).toBe(false);
+    });
+  });
+
+  describe("Valid Passwords", () => {
+    it("should return true if password is valid", () => {
+      const passwordValidator = new PasswordValidator();
+
+      const result = passwordValidator.validate("AbTp9!fok");
+      expect(result).toBe(true);
     });
   });
 });
