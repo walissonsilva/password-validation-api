@@ -1,4 +1,4 @@
-import { ValidationRule } from "src/models/ValidationRule";
+import { ValidationRule } from "../../models/ValidationRule";
 
 export class MinLengthRule extends ValidationRule {
   constructor(private minLength: number) {
