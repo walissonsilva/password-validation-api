@@ -1,5 +1,22 @@
 # API para Validação de Senha
 
+- [Funcionalidades](#funcionalidades)
+    - [Validar Senha](#validar-senha)
+    - [Healthcheck](#healthcheck)
+  - [Requisitos da Senha](#requisitos-da-senha)
+    - [Exemplos](#exemplos)
+  - [Tecnologias Utilizadas](#tecnologias-utilizadas)
+  - [Como Executar o Projeto?](#como-executar-o-projeto)
+    - [Pré-requisitos](#pré-requisitos)
+    - [Passos para Execução do Projeto](#passos-para-execução-do-projeto)
+    - [Execução dos Testes](#execução-dos-testes)
+  - [Decisões Técnicas do Projeto](#decisões-técnicas)
+    - [Variáveis de Ambiente](#1-variáveis-de-ambiente)
+    - [Setup de Testes](#2-setup-de-testes)
+    - [Implementação do Validador](#3-implementação-do-validador)
+    - [Injeção de Dependência](#4-injeção-de-dependência)
+- [Contato](#contato)
+
 Este projeto consiste em uma API REST desenvolvida utilizando Node.js, Express e TypeScript. A API expõe um endpoint para validar se a senha do usuário corresponde a determinado critérios.
 
 ## Funcionalidades
@@ -70,6 +87,9 @@ Abaixo são elencadas as principais tecnologias que foram utilizadas no projeto:
 - Node.js
 - Express
 - TypeScript
+- `tsyringe`: para criação de containers de injeção de dependências
+- `zed`: para a criação de schemas de validação
+- `vitest`: ferramenta de _test runner_.
 
 ## Como Executar o Projeto?
 
