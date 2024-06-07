@@ -1,8 +1,8 @@
 # API para Validação de Senha
 
 - [Funcionalidades](#funcionalidades)
-    - [Validar Senha](#validar-senha)
-    - [Healthcheck](#healthcheck)
+  - [Validar Senha](#validar-senha)
+  - [Healthcheck](#healthcheck)
   - [Requisitos da Senha](#requisitos-da-senha)
     - [Exemplos](#exemplos)
   - [Tecnologias Utilizadas](#tecnologias-utilizadas)
@@ -17,7 +17,7 @@
     - [Injeção de Dependência](#4-injeção-de-dependência)
 - [Contato](#contato)
 
-Este projeto consiste em uma API REST desenvolvida utilizando Node.js, Express e TypeScript. A API expõe um endpoint para validar se a senha do usuário corresponde a determinado critérios.
+Este projeto consiste em uma API REST desenvolvida utilizando Node.js, Express e TypeScript. A API expõe um endpoint para validar se a senha do usuário corresponde a determinados critérios.
 
 ## Funcionalidades
 
@@ -101,20 +101,6 @@ Abaixo são elencadas as principais tecnologias que foram utilizadas no projeto:
 - npm (versão 6 ou superior)
 - yarn (versão 1)
 
-Além disso, você precisa configurar as variáveis de ambiente do projeto, caso contrário, irá obter um erro ao tentar executar o servidor. Para mais detalhes sobre o funcionamento da validação das variáveis de ambiente, confira a seção [Variáveis de Ambiente](#1-variáveis-de-ambiente) em [Decisões do Projeto](#decisões-do-projeto).
-
-Neste momento, as variáveis de ambiente são:
-
-- `PORT`: a porta em que o servidor irá rodar.
-
-Dessa forma, você deve criar um arquivo `.env` na raiz do repositório que siga, por exemplo, o seguinte padrão:
-
-```
-PORT=5000
-```
-
-> 💡 Embora fosse possível definir um valor padrão para a variável `PORT`, eu optei por deixar essa definição manual por meio do arquivo `.env` para reforçar a importância da validação das variáveis de ambiente (considerando que essa é a única variável de ambiente do projeto).
-
 ### Passos para Execução do Projeto
 
 1. Clone o repositório e acesse a pasta do projeto:
@@ -130,7 +116,21 @@ cd password-validation-api
 yarn install
 ```
 
-3. Execute o servidor:
+3. Configurar variáveis de ambiente: você precisa configurar as variáveis de ambiente do projeto, caso contrário, irá obter um erro ao tentar executar o servidor. Para mais detalhes sobre o funcionamento da validação das variáveis de ambiente, confira a seção [Variáveis de Ambiente](#1-variáveis-de-ambiente) em [Decisões do Projeto](#decisões-técnicas-do-projeto).
+
+Neste momento, as variáveis de ambiente são:
+
+- `PORT`: a porta em que o servidor irá rodar.
+
+Dessa forma, você deve criar um arquivo `.env` na raiz do repositório que siga, por exemplo, o seguinte padrão:
+
+```
+PORT=5000
+```
+
+> 💡 Embora fosse possível definir um valor padrão para a variável `PORT`, eu optei por deixar essa definição manual por meio do arquivo `.env` para reforçar a importância da validação das variáveis de ambiente (considerando que essa é a única variável de ambiente do projeto).
+
+4. Execute o servidor:
 
 ```bash
 yarn dev
